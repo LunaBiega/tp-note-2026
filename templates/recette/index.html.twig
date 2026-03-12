@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+<h1>Liste des recettes</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Temps Préparation (min.)</th>
+        <th>Difficulté</th>
+        <th>Catégorie</th>
+        <th>Date Publication</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for recette in recettes %}
+        <tr>
+            <td>{{ recette.nom }}</td>
+            <td>{{ recette.description }}</td>
+            <td>{{ recette.tempsPreparation }}</td>
+            <td>{{ recette.difficulte }}</td>
+            <td>{{ recette.categorie }}</td>
+            <td>{{ recette.datePublication|date('d/m/Y') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques des recettes{% endblock %}
+
+{% block body %}
+
+    <h1>Statistiques des recettes</h1>
+
+    <table border="1">
+        <tr>
+            <th>Total recettes</th>
+            <th>Temps moyen</th>
+        </tr>
+        <tr>
+            <td>{{ stats.total }}</td>
+            <td>{{ stats.avgTime|number_format(1) }} minutes</td>
+        </tr>
+    </table>
+
+    <h2>Top catégories</h2>
+
+    <table border="1">
+        <tr>
+            <th>Catégorie</th>
+            <th>Nombre de recettes</th>
+        </tr>
+
+        {% for cat in stats.topCategories %}
+            <tr>
+                <td>{{ cat.category }}</td>
+                <td>{{ cat.total }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
